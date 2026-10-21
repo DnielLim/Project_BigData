@@ -1,10 +1,6 @@
 import os
 import sys
-import time
-import json
-import hashlib
 import pandas as pd
-import numpy as np
 import duckdb
 import plotly.express as px
 import plotly.graph_objects as go
@@ -89,7 +85,10 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 if os.path.join(BASE_DIR, "app") not in sys.path:
     sys.path.append(os.path.join(BASE_DIR, "app"))
 
-from data_engine import engine, OUTPUT_DIR, DATA_DIR
+try:
+    from app.data_engine import engine, OUTPUT_DIR, DATA_DIR
+except (ImportError, ModuleNotFoundError):
+    from data_engine import engine, OUTPUT_DIR, DATA_DIR
 
 # -------------------------------------------------------------
 # SIDEBAR
