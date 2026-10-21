@@ -80,15 +80,8 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Add app directory to sys.path
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-if os.path.join(BASE_DIR, "app") not in sys.path:
-    sys.path.append(os.path.join(BASE_DIR, "app"))
-
-try:
-    from app.data_engine import engine, OUTPUT_DIR, DATA_DIR
-except (ImportError, ModuleNotFoundError):
-    from data_engine import engine, OUTPUT_DIR, DATA_DIR
+# Import analytical data engine from app package
+from app.data_engine import engine, OUTPUT_DIR, DATA_DIR, BASE_DIR
 
 # -------------------------------------------------------------
 # SIDEBAR
